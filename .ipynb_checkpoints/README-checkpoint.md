@@ -6,11 +6,11 @@ Use AWS Sagemaker to train a pretrained model that can perform image classificat
 Enter AWS through the gateway in the course and open SageMaker Studio. 
 Run through the train_and_deploy.ipynb notebook to download and upload the dogImages to S3 bucket 
 for model training and evaluations. Running code cells sequentially should first set up hyperparameters 
-and run that for best model performance in hyperparamters space selected. Following that uses the selected hyperparameters and try to use those for more profiling and debugging features from the already selected hyperparameters. The estimator in each training step has an entry point to a python script that does all the loading of pretrianed resnet18 model and fine tunning those with the hyperparamters and the dogImages for this project. The best trined final model then is being used to create an inference endpoint.
+and run that for best model performance in hyperparamters space selected. Following that uses the selected hyperparameters and try to use those for more profiling and debugging features, and finally try to deploy the final model as an inference API endpoint. 
 
 ## Dataset
 The provided dataset is the dogbreed classification dataset which can be found in the classroom.
-It uses dogImages dataset provided which contains 3 folders of train/valid/test of 133 dog breeds which is used for multiclass prediction of dog breeds. 
+It uses dogImages dataset provided which contains 3 folders of train/val/test of 133 dog breeds which is used for multiclass prediction of dog breeds. 
 
 ### Access
 Upload the data to an S3 bucket through the AWS Gateway so that SageMaker has access to the data. 
@@ -26,7 +26,7 @@ Remember that your README should:
 - Retrieve the best best hyperparameters from all your training jobs
 
 ## Debugging and Profiling
-After getting the best estimator and hyperparameters corresponding to them the chosen parameters were used to create the final model by attaching debugging and profiling hooks from sagemaker. For this purpose smdebug was installed and different Rules were utilized to monitor for different conditions that model might encounter. Example of these conditionsare vanishing gradient and overfitting so this helps us to protect against common issues that model could experience by choosing incorrect learning rate orrun the model for many epochs and causing overfitting. 
+**TODO**: Give an overview of how you performed model debugging and profiling in Sagemaker
 
 ### Results
 **TODO**: What are the results/insights did you get by profiling/debugging your model?
