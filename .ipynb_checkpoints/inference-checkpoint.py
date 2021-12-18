@@ -2,6 +2,7 @@ import json
 import logging
 import sys
 import os
+import io
 import torch
 import torch.nn as nn
 import torchvision.models as models
@@ -27,7 +28,7 @@ def model_fn(model_dir):
     
     num_features=model.fc.in_features
     model.fc = nn.Sequential(nn.Linear(num_features, 133))
-​
+
     with open(os.path.join(model_dir, 'model.pth'), 'rb') as f:
         model.load_state_dict(torch.load(f))
     model.to(device).eval()
@@ -42,7 +43,7 @@ def input_fn(request_body, content_type='image/jpeg'):
         image_data = Image.open(io.BytesIO(request_body))
         
         image_transform = transforms.Compose([
-            transforms.Resize(224, 224),
+            transforms.Resize((224, 224)),
             transforms.ToTensor(),
             transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
         ])
